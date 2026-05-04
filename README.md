@@ -1,132 +1,140 @@
-# 🦠 EpiSim Pro — Epidemic Modeling & Forecasting Platform
+# 🦠 EpiSim Pro — Plataforma de Modelagem e Previsão Epidemiológica
 
-> A research-grade, policy-support epidemic simulation platform for modeling infectious disease spread with scientific accuracy, visual clarity, and decision-making utility.
+> Uma plataforma de simulação epidemiológica de nível científico para modelagem de doenças infecciosas com precisão matemática, clareza visual e utilidade para tomada de decisão em saúde pública.
 
----
+-----
 
-## 📋 Overview
+## 📋 Visão Geral
 
-**EpiSim Pro** is a professional, browser-based epidemic modeling platform built with React and Recharts. It implements validated compartmental epidemiological models solved with a 4th-order Runge-Kutta (RK4) ODE integrator, Monte Carlo uncertainty quantification, interactive parameter controls, and full CSV data export — all running client-side with no backend required.
+O **EpiSim Pro** é uma plataforma profissional de modelagem epidemiológica baseada em navegador, construída com React e Recharts. Implementa modelos compartimentais validados pela literatura científica — resolvidos numericamente pelo método de Runge-Kutta de 4ª ordem (RK4) — com análise de incerteza via Simulação de Monte Carlo, controles interativos de parâmetros e exportação completa de dados em CSV. Tudo roda inteiramente no navegador, sem necessidade de backend.
 
-Designed for researchers, healthcare professionals, educators, and government agencies who need a fast, transparent, and reproducible tool for outbreak simulation and policy planning.
+Desenvolvido para pesquisadores, profissionais de saúde, educadores e gestores públicos que precisam de uma ferramenta rápida, transparente e reprodutível para simulação de surtos e planejamento de políticas de saúde.
 
----
+-----
 
-## ✨ Features
+## ✨ Funcionalidades
 
-### Epidemiological Models
-| Model | Compartments | Description |
-|---|---|---|
-| **SEIRD+V** | S→E→I→R/D/H + V | Full model with hospitalization, deaths, vaccination |
-| **SIR** | S→I→R | Classic Kermack-McKendrick (1927) |
-| **SEIRS** | S→E→I→R→S | With waning immunity and reinfection cycles |
+### Modelos Epidemiológicos
 
-### Mathematical Engine
-- **RK4 ODE solver** (dt = 0.5 days) for numerical accuracy
-- **Force of infection** with intervention scaling
-- **Waning immunity** and reinfection pathways
-- **Monte Carlo** uncertainty analysis (n=80 stochastic runs, ±15–30% parameter perturbation)
-- **5th–95th percentile** confidence bands
+|Modelo     |Compartimentos |Descrição                                             |
+|-----------|---------------|------------------------------------------------------|
+|**SEIRD+V**|S→E→I→R/D/H + V|Modelo completo com hospitalização, mortes e vacinação|
+|**SIR**    |S→I→R          |Modelo clássico de Kermack-McKendrick (1927)          |
+|**SEIRS**  |S→E→I→R→S      |Com perda de imunidade e ciclos de reinfecção         |
 
-### Parameter Controls (15 adjustable sliders)
-- Transmission rate β, incubation σ, recovery γ, case fatality μ
-- Hospitalization & ICU rates
-- Waning immunity & reinfection factor
-- Vaccination rate & efficacy
-- Intervention effectiveness (contact reduction)
-- Population size & initial cases
-- Simulation duration (30–730 days)
+### Motor Matemático
 
-### Pre-loaded Disease Scenarios
-| Scenario | R₀ | CFR | Notes |
-|---|---|---|---|
-| COVID-19 (Baseline) | ~2.5 | 0.5% | Alpha/original strain |
-| COVID-19 (Omicron) | ~8.0 | 0.2% | With partial vaccine coverage |
-| Influenza (Seasonal) | ~1.4 | 0.1% | Typical seasonal flu |
-| Measles (Unvaccinated) | ~15 | 0.2% | No vaccination |
-| Ebola (Outbreak) | ~2.0 | 45% | High CFR, small population |
+- **Solver RK4** (Δt = 0,5 dias) para alta precisão numérica
+- **Força de infecção** com escalonamento por intervenções
+- **Perda de imunidade** e vias de reinfecção
+- **Monte Carlo** com análise de incerteza (n=80 corridas estocásticas, perturbação de ±15–30%)
+- **Bandas de confiança** do percentil 5 ao 95
 
-### Dashboard Tabs
-1. **Epidemic Curves** — Active infectious, daily incidence, deaths & recovered
-2. **Compartments** — Full SEIRD+V population flow
-3. **Rt Dynamics** — Time-varying reproduction number with threshold line
-4. **Hospital Stress** — Hospitalized/ICU demand vs. surge capacity
-5. **Age Groups** — Stratified impact by 6 age cohorts (IFR curves)
-6. **Uncertainty** — Monte Carlo confidence bands (5/25/50/75/95th percentile)
-7. **Data Table** — Paginated daily timeseries, filterable by interval
-8. **Scenario Compare** — Side-by-side metrics table, overlay chart, CFR bar chart
+### Controles de Parâmetros (15 sliders ajustáveis)
 
-### Export
-- **CSV export** from header button (current simulation)
-- **Per-scenario CSV** from the Scenario Compare tab
-- Interval filtering (every 1/7/14/30 days) in the Data Table
+- Taxa de transmissão β, incubação σ, recuperação γ, mortalidade μ
+- Taxas de hospitalização e UTI
+- Perda de imunidade e fator de reinfecção
+- Taxa e eficácia vacinal
+- Efetividade de intervenções (redução de contatos)
+- Tamanho da população e casos iniciais
+- Duração da simulação (30–730 dias)
 
----
+### Cenários Pré-configurados
 
-## 🚀 Getting Started
+|Cenário             |R₀  |CFR |Observações                  |
+|--------------------|----|----|-----------------------------|
+|COVID-19 (Baseline) |~2,5|0,5%|Cepa Alpha/original          |
+|COVID-19 (Omicron)  |~8,0|0,2%|Com cobertura vacinal parcial|
+|Influenza (Sazonal) |~1,4|0,1%|Gripe sazonal típica         |
+|Sarampo (sem vacina)|~15 |0,2%|Sem vacinação                |
+|Ebola (Surto)       |~2,0|45% |Alto CFR, população pequena  |
 
-### Prerequisites
+### Abas do Dashboard
+
+1. **Curvas Epidêmicas** — Infecciosos ativos, incidência diária, mortes e recuperados
+1. **Compartimentos** — Fluxo completo da população SEIRD+V
+1. **Dinâmica de Rt** — Número reprodutivo efetivo com linha de limiar
+1. **Estresse Hospitalar** — Demanda de hospitalizados/UTI vs. capacidade instalada
+1. **Grupos Etários** — Impacto estratificado por 6 faixas etárias (curvas de IFR)
+1. **Incerteza** — Bandas de confiança Monte Carlo (percentis 5/25/50/75/95)
+1. **Tabela de Dados** — Série temporal diária paginada e filtrável
+1. **Comparação de Cenários** — Tabela lateral, gráfico sobreposto e barras de CFR
+
+### Exportação de Dados
+
+- **Exportação CSV** pelo botão no cabeçalho (simulação atual)
+- **CSV por cenário** na aba Comparação de Cenários
+- Filtro de intervalo (a cada 1/7/14/30 dias) na Tabela de Dados
+
+-----
+
+## 🚀 Como Começar
+
+### Pré-requisitos
+
 - Node.js ≥ 16
-- npm or yarn
+- npm ou yarn
 
-### Installation
+### Instalação
 
 ```bash
-# Clone the repo
-git clone https://github.com/YOUR_USERNAME/episim-pro.git
+# Clone o repositório
+git clone https://github.com/Renato-SI/episim-pro.git
 cd episim-pro
 
-# Install dependencies
+# Instale as dependências
 npm install
 
-# Start development server
+# Inicie o servidor de desenvolvimento
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Acesse <http://localhost:3000> no seu navegador.
 
-### Production Build
+### Build de Produção
 
 ```bash
 npm run build
 ```
 
-The `build/` folder contains the optimized static site — deploy to GitHub Pages, Netlify, Vercel, or any static host.
+A pasta `build/` contém o site estático otimizado — pronto para deploy no GitHub Pages, Netlify, Vercel ou qualquer host estático.
 
-### Deploy to GitHub Pages
+### Deploy no GitHub Pages
 
 ```bash
 npm install --save-dev gh-pages
 
-# Add to package.json scripts:
+# Adicione ao package.json em "scripts":
 # "predeploy": "npm run build",
 # "deploy": "gh-pages -d build"
-# And: "homepage": "https://YOUR_USERNAME.github.io/episim-pro"
+# E no nível raiz: "homepage": "https://Renato-SI.github.io/episim-pro"
 
 npm run deploy
 ```
 
----
+-----
 
-## 🗂 Project Structure
+## 🗂 Estrutura do Projeto
 
 ```
 episim-pro/
 ├── public/
 │   └── index.html
 ├── src/
-│   ├── App.jsx          # Full application (single-file architecture)
-│   └── index.js         # React entry point
+│   ├── App.jsx          # Aplicação completa (arquitetura single-file)
+│   └── index.js         # Ponto de entrada React
 ├── package.json
 ├── .gitignore
+├── PROMPT.md
 └── README.md
 ```
 
----
+-----
 
-## 🔬 Mathematical Model
+## 🔬 Modelo Matemático
 
-### SEIRD+V Differential Equations
+### Equações Diferenciais — SEIRD+V
 
 ```
 dS/dt = -β·(I/N)·S·φ - ν·S·ε + ξ·R
@@ -138,70 +146,79 @@ dH/dt =  h·σ·E - 0.1·H - κ·H
 dV/dt =  ν·S·ε
 ```
 
-| Symbol | Parameter |
-|---|---|
-| β | Transmission rate |
-| σ | Incubation rate (1/incubation period) |
-| γ | Recovery rate (1/infectious period) |
-| μ | Case fatality rate |
-| φ | Intervention factor (contact reduction) |
-| ξ | Waning immunity rate |
-| δ | Reinfection susceptibility factor |
-| ν | Daily vaccination rate |
-| ε | Vaccine efficacy |
-| h | Hospitalization rate |
-| κ | ICU rate |
+|Símbolo|Parâmetro                                 |
+|-------|------------------------------------------|
+|β      |Taxa de transmissão                       |
+|σ      |Taxa de incubação (1/período de incubação)|
+|γ      |Taxa de recuperação (1/período infeccioso)|
+|μ      |Taxa de mortalidade por caso (CFR)        |
+|φ      |Fator de intervenção (redução de contatos)|
+|ξ      |Taxa de perda de imunidade                |
+|δ      |Fator de suscetibilidade à reinfecção     |
+|ν      |Taxa de vacinação diária                  |
+|ε      |Eficácia vacinal                          |
+|h      |Taxa de hospitalização                    |
+|κ      |Taxa de UTI                               |
 
-### Key Indices
+### Índices Epidemiológicos Chave
 
 ```
-R₀ = β / (γ + μ)                    Basic reproduction number
-Rt = R₀ · S(t) / N                  Effective reproduction number
-HIT = 1 - 1/R₀                      Herd immunity threshold
-AR  = 1 - S(∞) / N                  Final attack rate
+R₀  = β / (γ + μ)          Número básico de reprodução
+Rt  = R₀ · S(t) / N        Número reprodutivo efetivo
+HIT = 1 - 1/R₀             Limiar de imunidade coletiva
+AR  = 1 - S(∞) / N         Taxa de ataque final
 ```
 
----
+-----
 
-## 📊 Technology Stack
+## 📊 Stack Tecnológico
 
-| Layer | Technology |
-|---|---|
-| UI Framework | React 18 |
-| Charts | Recharts 2.x |
-| ODE Solver | Custom RK4 (pure JS) |
-| Styling | CSS-in-JS (inline) |
-| Fonts | Inter + JetBrains Mono (Google Fonts) |
-| Build | Create React App |
-| Export | Blob API (CSV) |
+|Camada      |Tecnologia                           |
+|------------|-------------------------------------|
+|Framework UI|React 18                             |
+|Gráficos    |Recharts 2.x                         |
+|Solver ODE  |RK4 customizado (JS puro)            |
+|Estilo      |CSS-in-JS (inline)                   |
+|Tipografia  |Inter + JetBrains Mono (Google Fonts)|
+|Build       |Create React App                     |
+|Exportação  |Blob API (CSV)                       |
 
-No external epidemiology libraries — all models are implemented from scratch for full transparency and reproducibility.
+Nenhuma biblioteca externa de epidemiologia — todos os modelos foram implementados do zero para garantir total transparência e reprodutibilidade científica.
 
----
+-----
 
-## ⚠️ Disclaimer
+## ⚠️ Aviso
 
-EpiSim Pro is a **research and educational tool**. It is not intended for clinical decision-making, patient care, or official public health policy without expert epidemiological review. Model outputs are sensitive to parameter assumptions and should be interpreted alongside domain expertise.
+O EpiSim Pro é uma **ferramenta de pesquisa e ensino**. Não se destina à tomada de decisão clínica, cuidado de pacientes ou políticas oficiais de saúde pública sem revisão epidemiológica especializada. Os resultados dos modelos são sensíveis às premissas dos parâmetros e devem ser interpretados com acompanhamento de especialistas.
 
----
+-----
 
-## 📄 License
+## 📄 Licença
 
-MIT License — free to use, modify, and distribute with attribution.
+Licença MIT — livre para usar, modificar e distribuir com atribuição.
 
----
+-----
 
-## 🤝 Contributing
+## 🤝 Contribuições
 
-Pull requests welcome. For major changes, please open an issue first to discuss what you'd like to change.
+Pull requests são bem-vindos. Para mudanças significativas, abra uma issue primeiro para discutir o que deseja alterar.
 
-Areas for contribution:
-- Age-structured POLYMOD contact matrices
-- Real-world data import (WHO, CDC APIs)
-- Additional model variants (SEIQR, network models)
-- Multi-patch spatial models
-- AI/ML forecasting layer
+Áreas para contribuição:
 
----
+- Matrizes de contato POLYMOD para estratificação etária realista
+- Import de dados reais (APIs da OMS, DATASUS, Our World in Data)
+- Variantes adicionais de modelos (SEIQR, modelos de rede)
+- Modelos espaciais de metapopulação
+- Camada de forecasting com IA/ML
 
-*Built with React + Recharts · Powered by RK4 numerical integration · Monte Carlo uncertainty quantification*
+-----
+
+## 👨‍💻 Autor
+
+**Renato Rodrigues Barbosa Filho**
+Bacharelado em Sistemas de Informação — UFRPE
+Orientador: Prof. Jones Albuquerque
+
+-----
+
+*Desenvolvido com React + Recharts · Integração numérica RK4 · Quantificação de incerteza por Monte Carlo*
